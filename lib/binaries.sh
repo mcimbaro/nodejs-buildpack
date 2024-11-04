@@ -71,7 +71,7 @@ install_nodejs() {
   local code resolve_result
 
   if [[ -z "$version" ]]; then
-      version="20.x"
+      version="22.x"
   fi
 
   if [[ -n "$NODE_BINARY_URL" ]]; then
@@ -89,7 +89,7 @@ install_nodejs() {
 
     echo "Downloading and installing node $number..."
 
-    if [[ "$number" == "22.5.0" ]]; then 
+    if [[ "$number" == "22.5.0" ]]; then
       warn_about_node_version_22_5_0
     fi
   fi

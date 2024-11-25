@@ -157,7 +157,12 @@ yarn_2_install() {
   echo "Running 'yarn install' with yarn.lock"
   cd "$build_dir" || return
 
-  monitor "yarn-2-install" yarn install --immutable 2>&1
+  if [ -z "$YARN_WORKSPACE" ]; then
+    monitor "yarn-2-install" yarn install --immutable 2>&1
+  else
+    echo "workspace: $YARN_WORKSPACE"
+    monitor "yarn-2-install" yarn workspace "$YARN_WORKSPACE" install --immutable 2>&1
+  fi
 }
 
 yarn_prune_devdependencies() {
